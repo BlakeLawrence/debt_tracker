@@ -5,6 +5,7 @@ import {
   incomeInput,
   mainHeading,
   buttonEnter,
+  buttonDanger,
 } from "./tailwind_classes/classNames";
 
 function App() {
@@ -14,8 +15,14 @@ function App() {
         <h1 className={mainHeading}>Debt Tracker</h1>
       </div>
       <h2 className="ml-2">enter salary after tax</h2>
-      <Input inputStyling={incomeInput} />
+      <Input inputStyling={incomeInput} placeholder="enter salary" />
       <Button buttonStyling={buttonEnter} />
+      <div>
+        <h2 className="ml-2">enter outgoings (eg. phone, travel, bills)</h2>
+        <Input inputStyling={incomeInput} placeholder="enter item" />
+        <Input inputStyling={incomeInput} placeholder="enter amount" />
+        <Button buttonStyling={buttonDanger} />
+      </div>
     </div>
   );
 }
