@@ -7,6 +7,7 @@ import {
   buttonEnter,
   buttonDanger,
 } from "./tailwind_classes/classNames";
+import TotalsModal from "./components/TotalsModal";
 
 function App() {
   return (
@@ -15,13 +16,28 @@ function App() {
         <h1 className={mainHeading}>Debt Tracker</h1>
       </div>
       <h2 className="ml-2">enter salary after tax</h2>
-      <Input inputStyling={incomeInput} placeholder="enter salary" />
+      <Input
+        type="number"
+        inputStyling={incomeInput}
+        placeholder="enter salary"
+      />
       <Button buttonStyling={buttonEnter} />
       <div>
         <h2 className="ml-2">enter outgoings (eg. phone, travel, bills)</h2>
-        <Input inputStyling={incomeInput} placeholder="enter item" />
-        <Input inputStyling={incomeInput} placeholder="enter amount" />
+        <Input
+          type="text"
+          inputStyling={incomeInput}
+          placeholder="enter item"
+        />
+        <Input
+          type="number"
+          inputStyling={incomeInput}
+          placeholder="enter amount"
+        />
         <Button buttonStyling={buttonDanger} />
+      </div>
+      <div>
+        <TotalsModal />
       </div>
     </div>
   );
