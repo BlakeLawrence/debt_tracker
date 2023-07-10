@@ -15,7 +15,14 @@ function App() {
       <div className="flex justify-center p-5">
         <h1 className={mainHeading}>Debt Tracker</h1>
       </div>
-      <h2 className="ml-2">enter salary after tax</h2>
+      <h2 className="ml-2">What is your current debt?</h2>
+      <Input
+        type="number"
+        inputStyling={incomeInput}
+        placeholder="enter debt"
+      />
+      <Button buttonStyling={buttonEnter} />
+      <h2 className="ml-2">What is your salary after tax?</h2>
       <Input
         type="number"
         inputStyling={incomeInput}
