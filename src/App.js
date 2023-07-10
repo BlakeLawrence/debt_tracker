@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import Input from "./components/Input";
 import Button from "./components/Button";
@@ -10,6 +11,9 @@ import {
 import TotalsModal from "./components/TotalsModal";
 
 function App() {
+  const [debt, setDebt] = useState(0);
+  const [item, setItem] = useState("");
+
   return (
     <div className="w-full h-screen bg-blue-100">
       <div className="flex justify-center p-5">
@@ -20,6 +24,7 @@ function App() {
         type="number"
         inputStyling={incomeInput}
         placeholder="enter debt"
+        onChange={(event) => setDebt(event.target.value)}
       />
       <Button buttonStyling={buttonEnter} />
       <h2 className="ml-2">What is your salary after tax?</h2>
@@ -35,6 +40,7 @@ function App() {
           type="text"
           inputStyling={incomeInput}
           placeholder="enter item"
+          onChange={(event) => setItem(event.target.value)}
         />
         <Input
           type="number"
@@ -44,7 +50,7 @@ function App() {
         <Button buttonStyling={buttonDanger} />
       </div>
       <div>
-        <TotalsModal />
+        <TotalsModal item={item} debt={debt} />
       </div>
     </div>
   );
