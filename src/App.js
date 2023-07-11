@@ -13,6 +13,8 @@ import TotalsModal from "./components/TotalsModal";
 function App() {
   const [debt, setDebt] = useState(0);
   const [item, setItem] = useState("");
+  const [income, setIncome] = useState(0);
+  const [outAmount, setOutAmount] = useState(0);
 
   return (
     <div className="w-full h-screen bg-blue-100">
@@ -24,7 +26,7 @@ function App() {
         type="number"
         inputStyling={incomeInput}
         placeholder="enter debt"
-        onChange={(event) => setDebt(event.target.value)}
+        changeEvent={(event) => setDebt(event.target.value)}
       />
       <Button buttonStyling={buttonEnter} />
       <h2 className="ml-2">What is your salary after tax?</h2>
@@ -32,6 +34,7 @@ function App() {
         type="number"
         inputStyling={incomeInput}
         placeholder="enter salary"
+        changeEvent={(event) => setIncome(event.target.value)}
       />
       <Button buttonStyling={buttonEnter} />
       <div>
@@ -40,17 +43,23 @@ function App() {
           type="text"
           inputStyling={incomeInput}
           placeholder="enter item"
-          onChange={(event) => setItem(event.target.value)}
+          changeEvent={(event) => setItem(event.target.value)}
         />
         <Input
           type="number"
           inputStyling={incomeInput}
           placeholder="enter amount"
+          changeEvent={(event) => setOutAmount(event.target.value)}
         />
         <Button buttonStyling={buttonDanger} />
       </div>
       <div>
-        <TotalsModal item={item} debt={debt} />
+        <TotalsModal
+          item={item}
+          debt={debt}
+          outAmount={outAmount}
+          income={income}
+        />
       </div>
     </div>
   );

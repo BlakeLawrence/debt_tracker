@@ -1,6 +1,6 @@
 import React from "react";
 
-const TotalsModal = ({ item, debt }) => {
+const TotalsModal = ({ item, debt, income, outAmount }) => {
   return (
     <div className="w-1/2 h-1/2 bg-[#fff] rounded-lg m-2 p-2">
       <div>
@@ -9,11 +9,11 @@ const TotalsModal = ({ item, debt }) => {
       </div>
       <div>
         <h3>Total Income</h3>
-        <h4>£ amount shown here</h4>
+        <h4>£ {income}</h4>
       </div>
       <div>
         <h3>Total Monthly Outgoings</h3>
-        <h4>{item}</h4>
+        <h4>£{outAmount}</h4>
       </div>
       <div>
         <h3>Months to pay off debt</h3>
