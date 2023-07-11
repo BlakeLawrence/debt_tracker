@@ -16,6 +16,11 @@ function App() {
   const [income, setIncome] = useState(0);
   const [outAmount, setOutAmount] = useState(0);
 
+  // function handleDebtAmount(e) {
+  //   e.prevent.default();
+  //   setDebt();
+  // }
+
   return (
     <div className="w-full h-screen bg-blue-100">
       <div className="flex justify-center p-5">
