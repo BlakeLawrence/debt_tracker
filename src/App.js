@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Input from "./components/Input";
 import Button from "./components/Button";
@@ -12,14 +12,14 @@ import TotalsModal from "./components/TotalsModal";
 
 function App() {
   const [debt, setDebt] = useState(0);
+  const [debtAmount, setDebtAmount] = useState([]);
   const [item, setItem] = useState("");
   const [income, setIncome] = useState(0);
   const [outAmount, setOutAmount] = useState(0);
 
-  // function handleDebtAmount(e) {
-  //   e.prevent.default();
-  //   setDebt();
-  // }
+  function handleDebtAmount() {
+    setDebtAmount([...debtAmount, { id: Math.random() * 100, number: debt }]);
+  }
 
   return (
     <div className="w-full h-screen bg-blue-100">
@@ -32,6 +32,9 @@ function App() {
         inputStyling={incomeInput}
         placeholder="enter debt"
         changeEvent={(event) => setDebt(event.target.value)}
+        clickEvent={() => {
+          handleDebtAmount();
+        }}
       />
       <Button buttonStyling={buttonEnter} />
       <h2 className="ml-2">What is your salary after tax?</h2>
@@ -60,6 +63,7 @@ function App() {
       </div>
       <div>
         <TotalsModal
+          debtAmount={debtAmount}
           item={item}
           debt={debt}
           outAmount={outAmount}
