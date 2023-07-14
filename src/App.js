@@ -20,6 +20,7 @@ function App() {
   function handleDebtAmount() {
     setDebtAmount([...debtAmount, { id: Math.random() * 100, number: debt }]);
   }
+  console.log(debtAmount, debtAmount.number);
 
   return (
     <div className="w-full h-screen bg-blue-100">
@@ -32,11 +33,13 @@ function App() {
         inputStyling={incomeInput}
         placeholder="enter debt"
         changeEvent={(event) => setDebt(event.target.value)}
+      />
+      <Button
         clickEvent={() => {
           handleDebtAmount();
         }}
+        buttonStyling={buttonEnter}
       />
-      <Button buttonStyling={buttonEnter} />
       <h2 className="ml-2">What is your salary after tax?</h2>
       <Input
         type="number"

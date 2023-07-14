@@ -5,7 +5,7 @@ const TotalsModal = ({ item, debt, debtAmount, income, outAmount }) => {
     <div className="w-1/2 h-1/2 bg-[#fff] rounded-lg m-2 p-2">
       <div>
         <h3>Total Debt</h3>
-        <h4>£ {debtAmount.number}</h4>
+        <h4>£ {debtAmount[0].number}</h4>
       </div>
       <div>
         <h3>Total Income</h3>
