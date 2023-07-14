@@ -13,25 +13,25 @@ const TotalsModal = ({ debtAmount, incomeAmount, outgoingsObject }) => {
           {debtAmount?.number > 0 && (
             <div>
               <h3 className="font-bold">Total Debt</h3>
-              <h4>{currency(debtAmount?.number)}</h4>
+              <h4 className="mb-2">{currency(debtAmount?.number)}</h4>
             </div>
           )}
           {incomeAmount.number > 0 && (
             <div>
               <h3 className="font-bold">Total Income</h3>
-              <h4>{currency(incomeAmount?.number)}</h4>
+              <h4 className="mb-2">{currency(incomeAmount?.number)}</h4>
             </div>
           )}
           {outgoingsObject.amount > 0 && (
             <div>
               <h3 className="font-bold">Total Monthly Outgoings</h3>
-              <h4>{currency(outgoingsObject?.amount)}</h4>
+              <h4 className="mb-2">{currency(outgoingsObject?.amount)}</h4>
             </div>
           )}
           {salaryBalance > 0 && (
             <div>
               <h3 className="font-bold">Salary balance after outgoings:</h3>
-              <h3>{currency(salaryBalance)}</h3>
+              <h3 className="mb-2">{currency(salaryBalance)}</h3>
             </div>
           )}
           {monthsToPayDebt > 0 && (
