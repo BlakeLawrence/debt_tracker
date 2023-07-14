@@ -12,15 +12,15 @@ import TotalsModal from "./components/TotalsModal";
 
 function App() {
   const [debt, setDebt] = useState(0);
-  const [debtAmount, setDebtAmount] = useState([]);
+  const [debtAmount, setDebtAmount] = useState({});
   const [item, setItem] = useState("");
   const [income, setIncome] = useState(0);
   const [outAmount, setOutAmount] = useState(0);
 
   function handleDebtAmount() {
-    setDebtAmount([...debtAmount, { id: Math.random() * 100, number: debt }]);
+    setDebtAmount({ id: Math.random() * 100, number: debt });
+    setDebt("");
   }
-  console.log(debtAmount, debtAmount.number);
 
   return (
     <div className="w-full h-screen bg-blue-100">
@@ -29,6 +29,7 @@ function App() {
       </div>
       <h2 className="ml-2">What is your current debt?</h2>
       <Input
+        value={debt}
         type="number"
         inputStyling={incomeInput}
         placeholder="enter debt"

@@ -6,9 +6,11 @@ const Input = ({
   type,
   changeEvent,
   clickEvent,
+  value,
 }) => {
   return (
     <input
+      value={value}
       onChange={changeEvent}
       onClick={clickEvent}
       type={type}
