@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import Input from "./components/Input";
 import Button from "./components/Button";
@@ -15,8 +15,9 @@ function App() {
   const [debtAmount, setDebtAmount] = useState({});
   const [income, setIncome] = useState();
   const [incomeAmount, setIncomeAmount] = useState({});
-  const [item, setItem] = useState("");
-  const [outAmount, setOutAmount] = useState(0);
+  const [outItem, setOutItem] = useState("");
+  const [outAmount, setOutAmount] = useState();
+  const [outgoingsObject, setOutgoingsObject] = useState({});
 
   function handleDebtAmount() {
     setDebtAmount({ id: Math.random() * 100, number: debt });
@@ -25,6 +26,16 @@ function App() {
   function handleIncomeAmount() {
     setIncomeAmount({ id: Math.random() * 100, number: income });
     setIncome("");
+  }
+
+  function handleOutgoings() {
+    setOutgoingsObject({
+      id: Math.random() * 100,
+      item: outItem,
+      amount: outAmount,
+    });
+    setOutAmount("");
+    setOutItem("");
   }
 
   return (
@@ -63,25 +74,27 @@ function App() {
       <div>
         <h2 className="ml-2">enter outgoings (eg. phone, travel, bills)</h2>
         <Input
+          value={outItem}
           type="text"
           inputStyling={incomeInput}
           placeholder="enter item"
-          changeEvent={(event) => setItem(event.target.value)}
+          changeEvent={(event) => setOutItem(event.target.value)}
         />
         <Input
+          value={outAmount}
           type="number"
           inputStyling={incomeInput}
           placeholder="enter amount"
           changeEvent={(event) => setOutAmount(event.target.value)}
         />
-        <Button buttonStyling={buttonDanger} />
+        <Button clickEvent={handleOutgoings} buttonStyling={buttonDanger} />
       </div>
       <div>
         <TotalsModal
           debtAmount={debtAmount}
-          item={item}
+          item={outItem}
           debt={debt}
-          outAmount={outAmount}
+          outgoingsObject={outgoingsObject}
           income={income}
           incomeAmount={incomeAmount}
         />
