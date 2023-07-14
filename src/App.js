@@ -11,9 +11,9 @@ import {
 import TotalsModal from "./components/TotalsModal";
 
 function App() {
-  const [debt, setDebt] = useState(0);
+  const [debt, setDebt] = useState();
   const [debtAmount, setDebtAmount] = useState({});
-  const [income, setIncome] = useState(0);
+  const [income, setIncome] = useState();
   const [incomeAmount, setIncomeAmount] = useState({});
   const [item, setItem] = useState("");
   const [outAmount, setOutAmount] = useState(0);
