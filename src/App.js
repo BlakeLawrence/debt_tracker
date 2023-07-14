@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="w-full h-screen bg-blue-100">
       <div className="flex justify-center p-5">
-        <h1 className={mainHeading}>Debt Tracker</h1>
+        <h1 className={mainHeading}>Debt Calculator</h1>
       </div>
       <h2 className="ml-2">What is your current debt?</h2>
       <Input
@@ -54,33 +54,39 @@ function App() {
         }}
         buttonStyling={buttonEnter}
       />
-      <h2 className="ml-2">What is your salary after tax?</h2>
-      <Input
-        value={income}
-        type="number"
-        inputStyling={incomeInput}
-        placeholder="enter salary"
-        changeEvent={(event) => setIncome(event.target.value)}
-      />
-      <Button
-        clickEvent={() => {
-          handleIncomeAmount();
-        }}
-        buttonStyling={buttonEnter}
-      />
-      <div>
-        <h2 className="ml-2">
-          Total Monthly Outgoings (eg. phone, travel, bills)
-        </h2>
-        <Input
-          value={outAmount}
-          type="number"
-          inputStyling={incomeInput}
-          placeholder="enter amount"
-          changeEvent={(event) => setOutAmount(event.target.value)}
-        />
-        <Button clickEvent={handleOutgoings} buttonStyling={buttonDanger} />
-      </div>
+      {debtAmount.number > 0 && (
+        <div>
+          <h2 className="ml-2">What is your salary after tax?</h2>
+          <Input
+            value={income}
+            type="number"
+            inputStyling={incomeInput}
+            placeholder="enter salary"
+            changeEvent={(event) => setIncome(event.target.value)}
+          />
+          <Button
+            clickEvent={() => {
+              handleIncomeAmount();
+            }}
+            buttonStyling={buttonEnter}
+          />
+        </div>
+      )}
+      {incomeAmount.number > 0 && (
+        <div>
+          <h2 className="ml-2">
+            Total Monthly Outgoings (eg. phone, travel, rent)
+          </h2>
+          <Input
+            value={outAmount}
+            type="number"
+            inputStyling={incomeInput}
+            placeholder="enter amount"
+            changeEvent={(event) => setOutAmount(event.target.value)}
+          />
+          <Button clickEvent={handleOutgoings} buttonStyling={buttonDanger} />
+        </div>
+      )}
       <div>
         <TotalsModal
           debtAmount={debtAmount}
