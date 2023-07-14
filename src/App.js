@@ -13,13 +13,18 @@ import TotalsModal from "./components/TotalsModal";
 function App() {
   const [debt, setDebt] = useState(0);
   const [debtAmount, setDebtAmount] = useState({});
-  const [item, setItem] = useState("");
   const [income, setIncome] = useState(0);
+  const [incomeAmount, setIncomeAmount] = useState({});
+  const [item, setItem] = useState("");
   const [outAmount, setOutAmount] = useState(0);
 
   function handleDebtAmount() {
     setDebtAmount({ id: Math.random() * 100, number: debt });
     setDebt("");
+  }
+  function handleIncomeAmount() {
+    setIncomeAmount({ id: Math.random() * 100, number: income });
+    setIncome("");
   }
 
   return (
@@ -43,12 +48,18 @@ function App() {
       />
       <h2 className="ml-2">What is your salary after tax?</h2>
       <Input
+        value={income}
         type="number"
         inputStyling={incomeInput}
         placeholder="enter salary"
         changeEvent={(event) => setIncome(event.target.value)}
       />
-      <Button buttonStyling={buttonEnter} />
+      <Button
+        clickEvent={() => {
+          handleIncomeAmount();
+        }}
+        buttonStyling={buttonEnter}
+      />
       <div>
         <h2 className="ml-2">enter outgoings (eg. phone, travel, bills)</h2>
         <Input
@@ -72,6 +83,7 @@ function App() {
           debt={debt}
           outAmount={outAmount}
           income={income}
+          incomeAmount={incomeAmount}
         />
       </div>
     </div>
