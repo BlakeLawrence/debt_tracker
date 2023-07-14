@@ -37,10 +37,10 @@ const TotalsModal = ({ debtAmount, incomeAmount, outgoingsObject }) => {
           {monthsToPayDebt > 0 && (
             <div>
               <h3 className="font-bold">
-                Debt free in {Math.floor(monthsToPayDebt)} Months
+                Debt free in {Math.floor(monthsToPayDebt)} Months :
               </h3>
-              <h3 className="font-bold">Debt free date:</h3>
-              <h3>{getFutureDate(monthsToPayDebt)}</h3>
+
+              {getFutureDate(monthsToPayDebt)}
             </div>
           )}
         </div>
