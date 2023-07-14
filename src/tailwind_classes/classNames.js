@@ -2,7 +2,7 @@
 export const mainHeading = "text-5xl text-black font-black";
 
 // inputs
-export const incomeInput = "rounded-md border-1 bg-slate-300 p-1 m-2";
+export const incomeInput = "rounded-md border-1 bg-slate-300 p-1 m-2 mb-6";
 
 // buttons
 export const buttonEnter =
