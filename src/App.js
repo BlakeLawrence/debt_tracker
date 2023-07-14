@@ -15,7 +15,6 @@ function App() {
   const [debtAmount, setDebtAmount] = useState({});
   const [income, setIncome] = useState();
   const [incomeAmount, setIncomeAmount] = useState({});
-  const [outItem, setOutItem] = useState("");
   const [outAmount, setOutAmount] = useState();
   const [outgoingsObject, setOutgoingsObject] = useState({});
 
@@ -31,11 +30,9 @@ function App() {
   function handleOutgoings() {
     setOutgoingsObject({
       id: Math.random() * 100,
-      item: outItem,
       amount: outAmount,
     });
     setOutAmount("");
-    setOutItem("");
   }
 
   return (
@@ -72,14 +69,9 @@ function App() {
         buttonStyling={buttonEnter}
       />
       <div>
-        <h2 className="ml-2">enter outgoings (eg. phone, travel, bills)</h2>
-        <Input
-          value={outItem}
-          type="text"
-          inputStyling={incomeInput}
-          placeholder="enter item"
-          changeEvent={(event) => setOutItem(event.target.value)}
-        />
+        <h2 className="ml-2">
+          Total Monthly Outgoings (eg. phone, travel, bills)
+        </h2>
         <Input
           value={outAmount}
           type="number"
@@ -92,7 +84,6 @@ function App() {
       <div>
         <TotalsModal
           debtAmount={debtAmount}
-          item={outItem}
           debt={debt}
           outgoingsObject={outgoingsObject}
           income={income}
