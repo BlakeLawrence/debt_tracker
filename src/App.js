@@ -36,7 +36,7 @@ function App() {
   }
 
   return (
-    <div className="w-full h-screen bg-blue-100">
+    <div className="w-full h-screen bg-grey-100">
       <div className="flex justify-center p-5">
         <h1 className={mainHeading}>Debt Calculator</h1>
       </div>

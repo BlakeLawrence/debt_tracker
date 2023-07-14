@@ -1,5 +1,5 @@
 // Headings
-export const mainHeading = "text-5xl text-blue-500 font-bold";
+export const mainHeading = "text-5xl text-black font-black";
 
 // inputs
 export const incomeInput = "rounded-md border-1 bg-slate-300 p-1 m-2";
