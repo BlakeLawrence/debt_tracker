@@ -54,6 +54,7 @@ function App() {
         }}
         buttonStyling={buttonEnter}
       />
+
       {debtAmount.number > 0 && (
         <div>
           <h2 className="ml-2">What is your salary after tax?</h2>
