@@ -11,26 +11,30 @@ import {
 import TotalsModal from "./components/TotalsModal";
 
 function App() {
-  const [debt, setDebt] = useState();
+  const [debt, setDebt] = useState("");
   const [debtAmount, setDebtAmount] = useState({});
-  const [income, setIncome] = useState();
+  const [income, setIncome] = useState("");
   const [incomeAmount, setIncomeAmount] = useState({});
-  const [outAmount, setOutAmount] = useState();
+  const [outAmount, setOutAmount] = useState("");
   const [outgoingsObject, setOutgoingsObject] = useState({});
 
   function handleDebtAmount() {
-    setDebtAmount({ id: Math.random() * 100, number: debt });
+    const debtAsNumber = Number(debt);
+    setDebtAmount({ id: Math.random() * 100, number: debtAsNumber });
     setDebt("");
   }
+
   function handleIncomeAmount() {
-    setIncomeAmount({ id: Math.random() * 100, number: income });
+    const incomeAsNumber = Number(income);
+    setIncomeAmount({ id: Math.random() * 100, number: incomeAsNumber });
     setIncome("");
   }
 
   function handleOutgoings() {
+    const outgoingsAsNumber = Number(outAmount);
     setOutgoingsObject({
       id: Math.random() * 100,
-      amount: outAmount,
+      amount: outgoingsAsNumber,
     });
     setOutAmount("");
   }
