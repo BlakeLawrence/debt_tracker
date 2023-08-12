@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Input from "./components/Input";
 import Button from "./components/Button";
@@ -10,9 +10,11 @@ import {
 import TotalsModal from "./components/TotalsModal";
 
 function App() {
+  //setting user input state
   const [debt, setDebt] = useState("");
   const [income, setIncome] = useState("");
   const [outAmount, setOutAmount] = useState("");
+  // setting fetched data state
   const [incomeAmount, setIncomeAmount] = useState(0);
   const [debtAmount, setDebtAmount] = useState(0);
   const [outgoingsAmount, setOutgoingsAmount] = useState(0);
@@ -31,6 +33,9 @@ function App() {
     setBalance(payload.balance);
     setMonths(payload.months);
   }
+  useEffect(() => {
+    getFinancials();
+  }, [income]);
 
   async function handleFinancials() {
     let balance = income - outAmount;
@@ -50,9 +55,7 @@ function App() {
     setDebt("");
     setIncome("");
     setOutAmount("");
-    getFinancials();
   }
-
   return (
     <div className="w-full h-screen bg-grey-100">
       <div className="flex justify-center p-5">
