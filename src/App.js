@@ -24,14 +24,13 @@ function App() {
   async function getFinancials() {
     const response = await fetch(financialsUrl);
     const data = await response.json();
-    console.log("fetched data:", data);
-    setDebtAmount(data.payload[data.payload.length - 1].debt);
-    setIncomeAmount(data.payload[data.payload.length - 1].income);
-    setOutgoingsAmount(data.payload[data.payload.length - 1].outgoings);
-    setBalance(data.payload[data.payload.length - 1].balance);
-    setMonths(data.payload[data.payload.length - 1].months);
+    const payload = data.payload[data.payload.length - 1];
+    setDebtAmount(payload.debt);
+    setIncomeAmount(payload.income);
+    setOutgoingsAmount(payload.outgoings);
+    setBalance(payload.balance);
+    setMonths(payload.months);
   }
-  getFinancials();
 
   async function handleFinancials() {
     let balance = income - outAmount;
