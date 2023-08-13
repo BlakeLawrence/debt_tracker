@@ -21,6 +21,7 @@ function App() {
   const [outgoingsAmount, setOutgoingsAmount] = useState(0);
   const [balance, setBalance] = useState(0);
   const [months, setMonths] = useState(0);
+  const [financeSection, setFinanceSection] = useState(false);
 
   const financialsUrl = "http://localhost:5000/api/v1/financials";
 
@@ -66,56 +67,76 @@ function App() {
       <div className="flex justify-center p-5">
         <h1 className={mainHeading}>Debt Planner</h1>
       </div>
-      <h2 className="ml-2">What is your current debt?</h2>
-      <Input
-        value={debt}
-        type="number"
-        inputStyling={incomeInput}
-        placeholder="enter debt"
-        changeEvent={(event) => setDebt(event.target.value)}
-      />
+      {!financeSection && (
+        <button
+          className="border-green-500 border text-green-500 p-2 rounded-lg ml-12"
+          onClick={() => setFinanceSection(!financeSection)}
+        >
+          Show Debt Calculator
+        </button>
+      )}
+      {financeSection && (
+        <div className="fixed w-1/2 ml-4 mt-2 mb-4 border border-blue-300 rounded-lg">
+          <div className=" flex justify-end w-full">
+            <button
+              className=" bg-red-500 text-white font-semibold py-1 px-2 m-2 rounded-md hover:font-bold fixed"
+              onClick={() => setFinanceSection(!financeSection)}
+            >
+              X
+            </button>
+          </div>
+          <h2 className="mt-2 ml-2">What is your current debt?</h2>
+          <Input
+            value={debt}
+            type="number"
+            inputStyling={incomeInput}
+            placeholder="enter debt"
+            changeEvent={(event) => setDebt(event.target.value)}
+          />
 
-      <div>
-        <h2 className="ml-2">What is your income total after tax?</h2>
-        <Input
-          value={income}
-          type="number"
-          inputStyling={incomeInput}
-          placeholder="enter salary"
-          changeEvent={(event) => setIncome(event.target.value)}
-        />
-      </div>
+          <div>
+            <h2 className="ml-2">What is your income total after tax?</h2>
+            <Input
+              value={income}
+              type="number"
+              inputStyling={incomeInput}
+              placeholder="enter salary"
+              changeEvent={(event) => setIncome(event.target.value)}
+            />
+          </div>
 
-      <div>
-        <h2 className="ml-2">
-          Your total Monthly Outgoings (eg. phone, travel, rent)?
-        </h2>
-        <Input
-          value={outAmount}
-          type="number"
-          inputStyling={incomeInput}
-          placeholder="enter amount"
-          changeEvent={(event) => setOutAmount(event.target.value)}
-        />
-        <Button
-          income={income}
-          debt={debt}
-          outAmount={outAmount}
-          clickEvent={handleFinancials}
-          buttonStyling={buttonEnter}
-          text={"calculate"}
-        />
-      </div>
+          <div>
+            <h2 className="ml-2">
+              Your total Monthly Outgoings (eg. phone, travel, rent)?
+            </h2>
+            <Input
+              value={outAmount}
+              type="number"
+              inputStyling={incomeInput}
+              placeholder="enter amount"
+              changeEvent={(event) => setOutAmount(event.target.value)}
+            />
+            <Button
+              income={income}
+              debt={debt}
+              outAmount={outAmount}
+              clickEvent={handleFinancials}
+              buttonStyling={buttonEnter}
+              text={"calculate"}
+            />
+          </div>
 
-      <div>
-        <TotalsModal
-          outgoingsAmount={outgoingsAmount}
-          debtAmount={debtAmount}
-          incomeAmount={incomeAmount}
-          months={months}
-          balance={balance}
-        />
-      </div>
+          <div>
+            <TotalsModal
+              outgoingsAmount={outgoingsAmount}
+              debtAmount={debtAmount}
+              incomeAmount={incomeAmount}
+              months={months}
+              balance={balance}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
