@@ -76,7 +76,7 @@ function App() {
   }
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col items-center p-5">
+      <div className="flex flex-col items-center p-5 h-[100px]">
         <h1 className={mainHeading}>Debt Planner</h1>
         <p className="font-semibold italic text-purple-600">{quotes}</p>
       </div>
@@ -86,7 +86,7 @@ function App() {
           className="border-purple-600 border text-purple-600 p-2 rounded-lg ml-12"
           onClick={() => setFinanceSection(!financeSection)}
         >
-          Show Debt Calculator
+          Show Debt Calculations
         </button>
       )}
       {financeSection && (
