@@ -1,9 +1,24 @@
 import React from "react";
 
-const Button = ({ buttonStyling, clickEvent }) => {
+const Button = ({
+  income,
+  debt,
+  outAmount,
+  buttonStyling,
+  clickEvent,
+  text,
+}) => {
   return (
-    <button onClick={clickEvent} className={buttonStyling}>
-      click
+    <button
+      disabled={income === "" || debt === "" || outAmount === "" ? true : false}
+      onClick={clickEvent}
+      className={
+        income === "" || debt === "" || outAmount === ""
+          ? "hidden"
+          : buttonStyling
+      }
+    >
+      {text}
     </button>
   );
 };

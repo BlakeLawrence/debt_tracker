@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Input from "./components/Input";
 import Button from "./components/Button";
+
 import {
   incomeInput,
   mainHeading,
@@ -39,27 +40,31 @@ function App() {
 
   async function handleFinancials() {
     let balance = income - outAmount;
-    const response = await fetch(financialsUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        debt: debt,
-        income: income,
-        outgoings: outAmount,
-        balance: balance,
-        months: Math.floor(debt / balance),
-      }),
-    });
-    const data = await response.json();
-    console.log("posted data:", data);
-    setDebt("");
-    setIncome("");
-    setOutAmount("");
+    try {
+      const response = await fetch(financialsUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          debt: debt,
+          income: income,
+          outgoings: outAmount,
+          balance: balance,
+          months: Math.floor(debt / balance),
+        }),
+      });
+      const data = await response.json();
+      console.log("posted data:", data);
+      setDebt("");
+      setIncome("");
+      setOutAmount("");
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <div className="w-full h-screen bg-grey-100">
       <div className="flex justify-center p-5">
-        <h1 className={mainHeading}>Debt Calculator</h1>
+        <h1 className={mainHeading}>Debt Planner</h1>
       </div>
       <h2 className="ml-2">What is your current debt?</h2>
       <Input
@@ -71,7 +76,7 @@ function App() {
       />
 
       <div>
-        <h2 className="ml-2">What is your salary after tax?</h2>
+        <h2 className="ml-2">What is your income total after tax?</h2>
         <Input
           value={income}
           type="number"
@@ -83,7 +88,7 @@ function App() {
 
       <div>
         <h2 className="ml-2">
-          Total Monthly Outgoings (eg. phone, travel, rent)
+          Your total Monthly Outgoings (eg. phone, travel, rent)?
         </h2>
         <Input
           value={outAmount}
@@ -92,7 +97,14 @@ function App() {
           placeholder="enter amount"
           changeEvent={(event) => setOutAmount(event.target.value)}
         />
-        <Button clickEvent={handleFinancials} buttonStyling={buttonEnter} />
+        <Button
+          income={income}
+          debt={debt}
+          outAmount={outAmount}
+          clickEvent={handleFinancials}
+          buttonStyling={buttonEnter}
+          text={"calculate"}
+        />
       </div>
 
       <div>
