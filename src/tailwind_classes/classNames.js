@@ -7,4 +7,4 @@ export const incomeInput =
 
 // buttons
 export const buttonEnter =
-  "rounded-md bg-purple-400 hover:bg-purple-600 px-2 py-1 m-2 text-white font-bold";
+  "border border-gray-300 rounded-md bg-purple-400 hover:bg-purple-600 px-2 py-1 m-2 text-white font-bold";
