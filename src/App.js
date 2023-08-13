@@ -83,7 +83,7 @@ function App() {
 
       {!financeSection && (
         <button
-          className="border-green-500 border text-green-500 p-2 rounded-lg ml-12"
+          className="border-purple-600 border text-purple-600 p-2 rounded-lg ml-12"
           onClick={() => setFinanceSection(!financeSection)}
         >
           Show Debt Calculator
@@ -93,7 +93,7 @@ function App() {
         <div className="fixed w-1/3 ml-4 bg-gradient-to-r from-indigo-300 to-purple-400 mt-2 rounded-lg shadow-lg">
           <div className=" flex justify-end w-full">
             <button
-              className=" bg-red-500 text-white font-semibold py-1 px-2 m-2 rounded-md hover:font-bold fixed"
+              className=" bg-purple-800 text-gray-300 font-semibold py-1 px-2 m-2 rounded-md hover:font-bold fixed"
               onClick={() => setFinanceSection(!financeSection)}
             >
               X
