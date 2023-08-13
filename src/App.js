@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./App.css";
 import Input from "./components/Input";
 import Button from "./components/Button";
+import moneyQuotes from "./helper-functions/quotes.js";
 
 import {
   incomeInput,
@@ -22,6 +23,17 @@ function App() {
   const [balance, setBalance] = useState(0);
   const [months, setMonths] = useState(0);
   const [financeSection, setFinanceSection] = useState(false);
+  const [quotes, setQuotes] = useState("");
+
+  const shuffle = useCallback(() => {
+    const index = Math.floor(Math.random() * moneyQuotes.length);
+    setQuotes(moneyQuotes[index]);
+  }, []);
+
+  useEffect(() => {
+    const intervalID = setInterval(shuffle, 12000);
+    return () => clearInterval(intervalID);
+  }, [shuffle]);
 
   const financialsUrl = "http://localhost:5000/api/v1/financials";
 
@@ -63,10 +75,12 @@ function App() {
     }
   }
   return (
-    <div className="w-full h-screen bg-grey-100">
-      <div className="flex justify-center p-5">
+    <div className="w-full h-full">
+      <div className="flex flex-col items-center p-5">
         <h1 className={mainHeading}>Debt Planner</h1>
+        <p className="font-semibold italic text-purple-600">{quotes}</p>
       </div>
+
       {!financeSection && (
         <button
           className="border-green-500 border text-green-500 p-2 rounded-lg ml-12"
@@ -76,7 +90,7 @@ function App() {
         </button>
       )}
       {financeSection && (
-        <div className="fixed w-1/2 ml-4 mt-2 mb-4 border border-blue-300 rounded-lg">
+        <div className="fixed w-1/3 ml-4 bg-gradient-to-r from-indigo-300 to-purple-400 mt-2 rounded-lg shadow-lg">
           <div className=" flex justify-end w-full">
             <button
               className=" bg-red-500 text-white font-semibold py-1 px-2 m-2 rounded-md hover:font-bold fixed"
@@ -85,17 +99,21 @@ function App() {
               X
             </button>
           </div>
-          <h2 className="mt-2 ml-2">What is your current debt?</h2>
-          <Input
-            value={debt}
-            type="number"
-            inputStyling={incomeInput}
-            placeholder="enter debt"
-            changeEvent={(event) => setDebt(event.target.value)}
-          />
+          <div className="">
+            <h2 className="mt-2 ml-2 text-purple-950 font-bold">Your debt?</h2>
+            <Input
+              value={debt}
+              type="number"
+              inputStyling={incomeInput}
+              placeholder="enter debt"
+              changeEvent={(event) => setDebt(event.target.value)}
+            />
+          </div>
 
           <div>
-            <h2 className="ml-2">What is your income total after tax?</h2>
+            <h2 className=" ml-2 text-purple-950 font-bold">
+              Your income after tax?
+            </h2>
             <Input
               value={income}
               type="number"
@@ -106,8 +124,8 @@ function App() {
           </div>
 
           <div>
-            <h2 className="ml-2">
-              Your total Monthly Outgoings (eg. phone, travel, rent)?
+            <h2 className=" ml-2 text-purple-950 font-bold">
+              Your monthly outgoings?
             </h2>
             <Input
               value={outAmount}

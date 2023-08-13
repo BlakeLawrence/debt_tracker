@@ -1,11 +1,10 @@
 // Headings
-export const mainHeading = "text-5xl text-black font-black";
+export const mainHeading = "text-5xl text-purple-900 font-black";
 
 // inputs
-export const incomeInput = "rounded-md border-1 bg-slate-300 p-1 m-2 mb-6";
+export const incomeInput =
+  "text-white placeholder-gray-300 rounded-md border-1 bg-purple-600 py-1 px-2 ml-2 mt-1 mb-4";
 
 // buttons
 export const buttonEnter =
-  "rounded-md bg-green-300 px-2 py-1 m-2 hover:bg-green-500";
-export const buttonDanger =
-  "rounded-md bg-red-300 px-2 py-1 m-2 hover:bg-red-500";
+  "rounded-md bg-purple-400 hover:bg-purple-600 px-2 py-1 m-2 text-white font-bold";
